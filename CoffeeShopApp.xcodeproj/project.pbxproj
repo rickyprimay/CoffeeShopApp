@@ -35,16 +35,6 @@
 			path = CoffeeShopApp;
 			sourceTree = "<group>";
 		};
-		EAEBD6592CB3FB0A00C5B6F7 /* CoffeeShopAppTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = CoffeeShopAppTests;
-			sourceTree = "<group>";
-		};
-		EAEBD6632CB3FB0A00C5B6F7 /* CoffeeShopAppUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = CoffeeShopAppUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				EAEBD6482CB3FB0700C5B6F7 /* CoffeeShopApp */,
-				EAEBD6592CB3FB0A00C5B6F7 /* CoffeeShopAppTests */,
-				EAEBD6632CB3FB0A00C5B6F7 /* CoffeeShopAppUITests */,
 				EAEBD6472CB3FB0700C5B6F7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,9 +118,6 @@
 			dependencies = (
 				EAEBD6582CB3FB0A00C5B6F7 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				EAEBD6592CB3FB0A00C5B6F7 /* CoffeeShopAppTests */,
-			);
 			name = CoffeeShopAppTests;
 			packageProductDependencies = (
 			);
@@ -152,9 +137,6 @@
 			);
 			dependencies = (
 				EAEBD6622CB3FB0A00C5B6F7 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				EAEBD6632CB3FB0A00C5B6F7 /* CoffeeShopAppUITests */,
 			);
 			name = CoffeeShopAppUITests;
 			packageProductDependencies = (
