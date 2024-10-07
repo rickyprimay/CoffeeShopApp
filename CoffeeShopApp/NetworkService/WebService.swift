@@ -15,9 +15,15 @@ enum NetworkError: Error {
 
 class WebService {
     
+    private var baseUrl: URL
+    
+    init(baseUrl: URL ) {
+        self.baseUrl = baseUrl
+    }
+    
     func getOrder() async throws -> [Order] {
         
-        guard let baseUrl = URL(string: "https://island-bramble-glitch.glitch.me/test/orders") else {
+        guard let baseUrl = URL(string: Endpoints.allOrders.path, relativeTo: self.baseUrl) else {
             throw NetworkError.badUrl
         }
         
