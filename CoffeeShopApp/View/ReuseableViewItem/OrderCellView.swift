@@ -13,17 +13,17 @@ struct OrderCellView: View {
     
     var body: some View {
         HStack {
-            VStack(alignment: .leading){
-                Text(order.name)
-                    .accessibilityIdentifier("OrderNameText")
+            VStack(alignment: .leading) {
+                Text(order.name).accessibilityIdentifier("orderNameText")
                     .bold()
                 Text("\(order.coffeeName) (\(order.size.rawValue))")
-                    .accessibilityIdentifier("CoffeeNameAndSizeText")
+                    .accessibilityIdentifier("coffeeNameAndSizeText")
                     .opacity(0.5)
+                
             }
             Spacer()
             Text(order.total as NSNumber, formatter: NumberFormatter.currency)
-                .accessibilityIdentifier("CoffeePriceText")
+                .accessibilityIdentifier("coffeePriceText")
         }
     }
 }

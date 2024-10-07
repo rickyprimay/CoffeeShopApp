@@ -8,14 +8,14 @@
 import SwiftUI
 
 @main
-struct CoffeeShopAppApp: App {
+struct HelloCoffeeApp: App {
     
     @StateObject private var model: CoffeeModel
     
     init() {
         var config = Configuration()
-        let webService = WebService(baseUrl: config.environment.baseUrl)
-        _model = StateObject(wrappedValue: CoffeeModel(webService: webService))
+        let webservice = Webservice(baseURL: config.environment.baseURL)
+        _model = StateObject(wrappedValue: CoffeeModel(webservice: webservice))
     }
     
     var body: some Scene {

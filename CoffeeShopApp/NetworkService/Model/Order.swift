@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum CoffeSize: String, Codable, CaseIterable {
+enum CoffeeSize: String, Codable, CaseIterable {
     case small = "Small"
     case medium = "Medium"
     case large = "Large"
@@ -15,10 +15,10 @@ enum CoffeSize: String, Codable, CaseIterable {
 
 struct Order: Codable, Identifiable, Hashable {
     
-    let id: Int?
-    let name: String
-    let coffeeName: String
+    var id: Int?
+    var name: String
+    var coffeeName: String
     var total: Double
-    var size: CoffeSize
+    var size: CoffeeSize
     
 }

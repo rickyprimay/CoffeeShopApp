@@ -10,11 +10,14 @@ import SwiftUI
 enum Endpoints {
     
     case allOrders
+    case placeOrder
     
     var path: String {
         switch self {
             case .allOrders:
-                return "/orders"
+                return "/test/orders"
+            case .placeOrder:
+                return "/test/new-order"
         }
     }
 }
@@ -22,7 +25,7 @@ enum Endpoints {
 struct Configuration {
     
     lazy var environment: AppEnvironment = {
-       
+        
         guard let env = ProcessInfo.processInfo.environment["ENV"] else {
             return AppEnvironment.dev
         }
@@ -41,7 +44,7 @@ enum AppEnvironment: String {
     case dev
     case test
     
-    var baseUrl : URL {
+    var baseURL: URL {
         switch self {
             case .dev:
                 return URL(string: "https://island-bramble.glitch.me")!
@@ -49,4 +52,5 @@ enum AppEnvironment: String {
                 return URL(string: "https://island-bramble.glitch.me")!
         }
     }
+    
 }

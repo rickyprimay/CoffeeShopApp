@@ -10,17 +10,20 @@ import SwiftUI
 @MainActor
 class CoffeeModel: ObservableObject {
     
-    let webService: WebService
+    let webservice: Webservice
     @Published private(set) var orders: [Order] = []
     
-    init(webService: WebService) {
-        self.webService = webService
+    init(webservice: Webservice) {
+        self.webservice = webservice
     }
     
     func populateOrders() async throws {
-        let orders = try await webService.getOrder()
-        DispatchQueue.main.async {
-            self.orders = orders
-        }
+        orders = try await webservice.getOrders()
     }
+    
+    func placeOrder(_ order: Order) async throws {
+        let newOrder = try await webservice.placeOrder(order: order)
+        orders.append(newOrder)
+    }
+    
 }
