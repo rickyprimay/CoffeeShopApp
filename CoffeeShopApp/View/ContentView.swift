@@ -44,11 +44,18 @@ struct ContentView: View {
                 } else {
                     List {
                         ForEach(model.orders) { order in
-                            OrderCellView(order: order)
+                            NavigationLink(value: order.id) {
+                                OrderCellView(order: order)
+                            }
+//                            OrderCellView(order: order)
                         }.onDelete(perform: deleteOrder)
-                    }
+                    }.accessibilityIdentifier("ordersList")
                 }
-            }.task {
+            }
+            .navigationDestination(for: Int.self, destination: { orderId in
+                OrderDetailView(orderId: orderId)
+            })
+            .task {
                 await populateOrders()
             }
             .sheet(isPresented: $isPresented, content: {

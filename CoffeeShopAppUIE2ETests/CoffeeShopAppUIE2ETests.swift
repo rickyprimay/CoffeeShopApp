@@ -7,6 +7,66 @@
 
 import XCTest
 
+final class when_updating_an_existing_order: XCTestCase {
+    
+    private var app: XCUIApplication!
+    
+    override func setUp()  {
+        app = XCUIApplication()
+        continueAfterFailure = false
+        app.launchEnvironment = ["ENV" : "TEST"]
+        app.launch()
+        
+        app.buttons["addNewOrderButton"].tap()
+        
+        let nameTextField = app.textFields["name"]
+        let coffeeNameTextField = app.textFields["coffeeName"]
+        let priceTextField = app.textFields["price"]
+        let placeOrderButton = app.buttons["placeOrderButton"]
+        
+        nameTextField.tap()
+        nameTextField.typeText("Ricky")
+        
+        coffeeNameTextField.tap()
+        coffeeNameTextField.typeText("Kopi Susu Disaat")
+        
+        priceTextField.tap()
+        priceTextField.typeText("4.50")
+        
+        placeOrderButton.tap()
+    }
+    
+    func test_should_update_order_successfully() {
+        
+        let orderList = app.collectionViews["ordersList"]
+                orderList.buttons["orderNameText-coffeeNameAndSizeText-coffeePriceText"].tap()
+        
+        app.buttons["editOrderButton"].tap()
+                
+        let nameTextField = app.textFields["name"]
+        let coffeeNameTextField = app.textFields["coffeeName"]
+        let priceTextField = app.textFields["price"]
+        let placeOrderButton = app.buttons["placeOrderButton"]
+        
+        let _ = nameTextField.waitForExistence(timeout: 2)
+        nameTextField.tap(withNumberOfTaps: 2, numberOfTouches: 1)
+        nameTextField.typeText("Ricky Edited")
+        
+        let _ = coffeeNameTextField.waitForExistence(timeout: 2)
+        coffeeNameTextField.tap(withNumberOfTaps: 2, numberOfTouches: 1)
+        coffeeNameTextField.typeText("Kopi Susu Disaat Edited")
+        
+        let _ = priceTextField.waitForExistence(timeout: 2)
+        priceTextField.tap(withNumberOfTaps: 2, numberOfTouches: 1)
+        priceTextField.typeText("5.50")
+        
+        placeOrderButton.tap()
+        
+        XCTAssertEqual("Kopi Susu Disaat Edited", app.staticTexts["coffeeNameText"].label)
+    }
+    
+}
+
 final class when_deleting_an_order: XCTestCase {
     
     private var app: XCUIApplication!

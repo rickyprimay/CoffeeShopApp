@@ -39,4 +39,12 @@ class CoffeeModel: ObservableObject {
         orders[index] = updateOrder
     }
     
+    func orderById (_ id: Int) -> Order? {
+        guard let index = orders.firstIndex(where: { $0.id == id }) else {
+            return nil
+        }
+                
+        return orders[index]
+    }
+    
 }
