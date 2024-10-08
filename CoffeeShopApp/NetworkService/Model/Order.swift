@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+
+enum CoffeeOrderError: Error {
+    case invalidOrderId
+}
+
 enum CoffeeSize: String, Codable, CaseIterable {
     case small = "Small"
     case medium = "Medium"
